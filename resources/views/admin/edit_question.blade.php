@@ -6,14 +6,30 @@
 @section('content')
     <div class="" style="padding: 15px;">
         <blockquote class="layui-elem-quote">
-           添加问题
+            添加问题选项
         </blockquote>
-        <form class="layui-form" method="POST" action="{{ url('/question/edit') }}">
+        <form class="layui-form" method="POST" action="{{ url('/question/options') }}">
             <div class="layui-form-item">
-                <label class="layui-form-label" >请修改要提交的问题</label>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">选择要插入选项的问题</label>
+                    <div class="layui-input-block">
+                        <select name="subject_id" lay-verify="required">
+                            <option value=""></option>
+                            @foreach($subject as $subjects)
+                                <option value="{{$subjects->id}}">{{$subjects->subject}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <label class="layui-form-label" >请输入要提交的问题选项</label>
                 <div class="layui-input-block">
                     <input type="hidden" name="_token" value="{{csrf_token()}}"/>
-                    <input type="text" name="subject" required  lay-verify="required" placeholder="请输入问题" autocomplete="off" class="layui-input" value="{{$model->subject}}">
+                    <input type="text" name="option" required  lay-verify="required" placeholder="请输入问题选项" autocomplete="off" class="layui-input" value="{{$subjects->id}}">
+                </div>
+                <label class="layui-form-label" >请输入选项对应分数</label>
+                <div class="layui-input-block">
+                    <input type="hidden" name="_token" value="{{csrf_token()}}"/>
+                    <input type="text" name="fraction" required  lay-verify="required" placeholder="请输入问题选项" autocomplete="off" class="layui-input" value="{{$subjects->id}}">
                 </div>
             </div>
             <div class="layui-form-item">

@@ -22,7 +22,7 @@
             @foreach($subject as $subjects)
             <tr>
                 <td>问题{{$subjects->id}}:&nbsp&nbsp&nbsp&nbsp{{$subjects->subject}}</td>
-                <td><a href="{{ url('question/sites/'.$subjects->id.'/edit') }}" class="layui-btn layui-btn-primary layui-btn-sm">编辑</a>
+                <td>
                     <a href="{{ url('question/sites/'.$subjects->id.'/del') }}" class="layui-btn layui-btn-warm layui-btn-sm">删除</a>
             </tr>
 

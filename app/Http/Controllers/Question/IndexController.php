@@ -44,9 +44,9 @@ class IndexController extends Controller
         return view('admin.subject_list',compact('subject','option'));
     }
     public function edit($id){
-        dd($id);
 //     $this->options()
-       $model=$this->Subjects->find($id);
+       $model=$this->Options->find($id);
+
        return view('admin.edit_question',compact('model'));
 
     }
