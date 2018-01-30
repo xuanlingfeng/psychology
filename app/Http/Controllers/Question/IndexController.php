@@ -43,6 +43,13 @@ class IndexController extends Controller
 //        dd($option);
         return view('admin.subject_list',compact('subject','option'));
     }
+    public function edit($id){
+        dd($id);
+//     $this->options()
+       $model=$this->Subjects->find($id);
+       return view('admin.edit_question',compact('model'));
+
+    }
 
     /**
      * 集团网站主页
@@ -79,10 +86,7 @@ class IndexController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
-    }
+
 
     /**
      * Update the specified resource in storage.

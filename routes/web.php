@@ -26,4 +26,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/options', 'Question\IndexController@xuanxiang');
     Route::post('/question/options', 'Question\IndexController@options');
     Route::get('/list','Question\IndexController@list');
+    Route::resource('/question/sites','Question\IndexController');
+    Route::post('/question/edit', 'Question\IndexController@edit');
+
 });
