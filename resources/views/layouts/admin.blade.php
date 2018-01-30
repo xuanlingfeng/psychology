@@ -45,6 +45,7 @@
                 <li class="layui-nav-item"><a href="{{ url('/admin') }}">控制台</a></li>
                 <li class="layui-nav-item"><a href="{{ url('/wenti') }}">添加问题</a></li>
                 <li class="layui-nav-item"><a href="{{ url('/options') }}">添加问题选项</a></li>
+                <li class="layui-nav-item"><a href="{{ url('/list') }}">问题列表显示</a></li>
             </ul>
             <ul class="layui-nav layui-layout-right">
                 <li class="layui-nav-item">

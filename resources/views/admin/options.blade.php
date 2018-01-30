@@ -8,29 +8,28 @@
         <blockquote class="layui-elem-quote">
            添加问题选项
         </blockquote>
-        <form class="layui-form" method="POST" action="{{ url('/question') }}">
+        <form class="layui-form" method="POST" action="{{ url('/question/options') }}">
             <div class="layui-form-item">
-                <label class="layui-form-label" >请输入要提交的问题</label>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">选择框</label>
+                    <label class="layui-form-label">选择要插入选项的问题</label>
                     <div class="layui-input-block">
-                        <select name="city" lay-verify="required">
+                        <select name="subject_id" lay-verify="required">
                             <option value=""></option>
-                            {{--foreach--}}
-                            {{--<option value="0">北京</option>--}}
-                            {{--<option value="1">上海</option>--}}
-                            {{--<option value="2">广州</option>--}}
-                            {{--<option value="3">深圳</option>--}}
-                            {{--<option value="4">杭州</option>--}}
                             @foreach($subject as $subjects)
-                                <option value="">{{$subjects->subject}}</option>
+                                <option value="{{$subjects->id}}">{{$subjects->subject}}</option>
                             @endforeach
                         </select>
                     </div>
                 </div>
+                <label class="layui-form-label" >请输入要提交的问题选项</label>
                 <div class="layui-input-block">
                     <input type="hidden" name="_token" value="{{csrf_token()}}"/>
-                    <input type="text" name="question" required  lay-verify="required" placeholder="请输入问题" autocomplete="off" class="layui-input">
+                    <input type="text" name="option" required  lay-verify="required" placeholder="请输入问题选项" autocomplete="off" class="layui-input" value="{{$subjects->id}}">
+                </div>
+                <label class="layui-form-label" >请输入选项对应分数</label>
+                <div class="layui-input-block">
+                    <input type="hidden" name="_token" value="{{csrf_token()}}"/>
+                    <input type="text" name="fraction" required  lay-verify="required" placeholder="请输入问题选项" autocomplete="off" class="layui-input" value="{{$subjects->id}}">
                 </div>
             </div>
             <div class="layui-form-item">

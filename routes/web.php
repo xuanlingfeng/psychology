@@ -23,5 +23,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin', 'Admin\IndexController@index'); // 返回后台视图
     Route::get('/wenti', 'Admin\IndexController@wenti');//添加问题试图
     Route::post('/question', 'Question\IndexController@index');
-    Route::post('/options', 'Question\IndexController@option');
+    Route::get('/options', 'Question\IndexController@xuanxiang');
+    Route::post('/question/options', 'Question\IndexController@options');
+    Route::get('/list','Question\IndexController@list');
 });

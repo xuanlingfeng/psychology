@@ -13,7 +13,7 @@
                 <label class="layui-form-label" >请输入要提交的问题</label>
                 <div class="layui-input-block">
                     <input type="hidden" name="_token" value="{{csrf_token()}}"/>
-                    <input type="text" name="question" required  lay-verify="required" placeholder="请输入问题" autocomplete="off" class="layui-input">
+                    <input type="text" name="subject" required  lay-verify="required" placeholder="请输入问题" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
