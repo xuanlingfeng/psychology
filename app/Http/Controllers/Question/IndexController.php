@@ -58,10 +58,18 @@ class IndexController extends Controller
         $data=$request->all();
         if(isset($data['fraction'])){
            $re=$this->Options->where('id',$id)->update(['option'=>$data['option'],'fraction'=>$data['fraction']]);
-            return view('admin.subject_list');
+            $subject=$this->Subjects->get();
+//        dd($subjects);
+            $option=$this->Options->get();
+//        dd($option);
+            return view('admin.subject_list',compact('subject','option'));
         }else{
           $re=$this->Subjects->where('id',$id)->update([ 'subject'=>$data['subject']]);
-            return view('admin.subject_list');
+            $subject=$this->Subjects->get();
+//        dd($subjects);
+            $option=$this->Options->get();
+//        dd($option);
+            return view('admin.subject_list',compact('subject','option'));
         }
 
     }
@@ -72,17 +80,19 @@ class IndexController extends Controller
             $this->Subjects->where('id',$id)->delete();
             $this->Options->where('subject_id',$id)->delete();
             $subject=$this->Subjects->get();
+//        dd($subjects);
             $option=$this->Options->get();
-
+//        dd($option);
             return view('admin.subject_list',compact('subject','option'));
         }else{
             $re=explode('s',$id);
             $id=$re[0];
             $re=$this->Options->where('id',$id)->delete();
             $subject=$this->Subjects->get();
+//        dd($subjects);
             $option=$this->Options->get();
-
-            return view('admin.subject_list ',compact('subject','option'));
+//        dd($option);
+            return view('admin.subject_list',compact('subject','option'));
         }
     }
 
