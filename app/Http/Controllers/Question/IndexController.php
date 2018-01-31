@@ -44,11 +44,43 @@ class IndexController extends Controller
         return view('admin.subject_list',compact('subject','option'));
     }
     public function edit($id){
-//     $this->options()
-       $model=$this->Options->find($id);
+        if(is_numeric($id)){
+           $model=$this->Subjects->find($id);
+           return view('admin.edit_question ',compact('model','id'));
+        }else{
+           $re=explode('s',$id);
+           $id=$re[0];
+           $model=$this->Options->find($id);
+            return view('admin.edit_option ',compact('model','id'));
+        }
+    }
+    public function change(Request $request,$id){
+        $data=$request->all();
+        if(isset($data['fraction'])){
+           $re=$this->Options->where('id',$id)->update(['option'=>$data['option'],'fraction'=>$data['fraction']]);
+            return view('admin.subject_list');
+        }else{
+          $re=$this->Subjects->where('id',$id)->update([ 'subject'=>$data['subject']]);
+            return view('admin.subject_list');
+        }
 
-       return view('admin.edit_question',compact('model'));
+    }
+    public function del($id){
+//        dd($subjects);
+//        dd($option);
+        if(is_numeric($id)){
+            $this->Subjects->where('id',$id)->delete();
+            $this->Options->where('subject_id',$id)->delete();
+            $subject=$this->Subjects->get();
+            $option=$this->Options->get();
 
+            return view('admin.subject_list',compact('subject','option'));
+        }else{
+            $re=explode('s',$id);
+            $id=$re[0];
+            $re=$this->Options->where('id',$id)->delete();
+            return view('admin.subject_list ',compact('subject','option'));
+        }
     }
 
     /**

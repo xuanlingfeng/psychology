@@ -6,14 +6,19 @@
 @section('content')
     <div class="" style="padding: 15px;">
         <blockquote class="layui-elem-quote">
-            添加问题
+           添加问题选项
         </blockquote>
         <form class="layui-form" method="POST" action="{{ url('/question/edits/'.$id) }}">
             <div class="layui-form-item">
-                <label class="layui-form-label" >请修改要提交的问题</label>
+                <label class="layui-form-label" >请修改要提交的问题选项</label>
                 <div class="layui-input-block">
                     <input type="hidden" name="_token" value="{{csrf_token()}}"/>
-                    <input type="text" name="subject" required  lay-verify="required" placeholder="请输入问题" autocomplete="off" class="layui-input" value="{{$model['subject']}}">
+                    <input type="text" name="option" required  lay-verify="required" placeholder="请输入问题选项" autocomplete="off" class="layui-input" value="{{$model['option']}}">
+                </div>
+                <label class="layui-form-label" >请修改选项对应分数</label>
+                <div class="layui-input-block">
+                    <input type="hidden" name="_token" value="{{csrf_token()}}"/>
+                    <input type="text" name="fraction" required  lay-verify="required" placeholder="请输入问题选项" autocomplete="off" class="layui-input" value="{{$model['fraction']}}">
                 </div>
             </div>
             <div class="layui-form-item">

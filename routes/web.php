@@ -28,5 +28,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/list','Question\IndexController@list');
     Route::resource('/question/sites','Question\IndexController');
     Route::post('/question/edit', 'Question\IndexController@edit');
-
+    Route::post('/question/edits/{id}', 'Question\IndexController@change');
+    Route::get('/question/sites/{id}/del', 'Question\IndexController@del');
 });
