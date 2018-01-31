@@ -79,6 +79,9 @@ class IndexController extends Controller
             $re=explode('s',$id);
             $id=$re[0];
             $re=$this->Options->where('id',$id)->delete();
+            $subject=$this->Subjects->get();
+            $option=$this->Options->get();
+
             return view('admin.subject_list ',compact('subject','option'));
         }
     }
